@@ -1,10 +1,13 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Image } from "react-native";
 import { Link } from "expo-router";
-import React from "react";
+
+// themed components
+import ThemedView from "../components/ThemedView";
+import ThemedText from "../components/ThemedText";
 
 const Home = () => {
   return (
-    <View style={styles.container}>
+    <ThemedView style={styles.container}>
       <Image
         source={require("../assets/icon.png")}
         style={{
@@ -14,8 +17,10 @@ const Home = () => {
           marginVertical: 10,
         }}
       />
-      <Text style={styles.title}>The number 1</Text>
-      <Text
+      <ThemedText style={styles.title} title>
+        The number 1
+      </ThemedText>
+      <ThemedText
         style={{
           fontSize: 16,
           fontWeight: "normal",
@@ -23,7 +28,7 @@ const Home = () => {
         }}
       >
         Reading list app
-      </Text>
+      </ThemedText>
 
       <Link href="/about" style={styles.link}>
         About Page
@@ -31,7 +36,7 @@ const Home = () => {
       <Link href="/contact" style={styles.link}>
         Contact Page
       </Link>
-    </View>
+    </ThemedView>
   );
 };
 
