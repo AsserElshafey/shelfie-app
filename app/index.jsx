@@ -1,4 +1,4 @@
-import { StyleSheet, Image } from "react-native";
+import { StyleSheet, Image, View } from "react-native";
 import { Link } from "expo-router";
 
 // themed components
@@ -30,12 +30,14 @@ const Home = () => {
         Reading list app
       </ThemedText>
 
-      <Link href="/about" style={styles.link}>
-        About Page
-      </Link>
-      <Link href="/contact" style={styles.link}>
-        Contact Page
-      </Link>
+      <View style={styles.Links}>
+        <Link href="/login" style={styles.link}>
+          Login
+        </Link>
+        <Link href="/register" style={styles.link}>
+          Register
+        </Link>
+      </View>
     </ThemedView>
   );
 };
@@ -47,10 +49,18 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    gap: 20,
   },
   title: {
     fontSize: 20,
     fontWeight: "bold",
+  },
+  Links: {
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 8,
   },
   link: {
     backgroundColor: "#eee",
