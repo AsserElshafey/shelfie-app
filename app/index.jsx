@@ -37,6 +37,9 @@ const Home = () => {
         <Link href="/register" style={styles.link}>
           Register
         </Link>
+        <Link href="/profile" style={styles.link}>
+          Profile
+        </Link>
       </View>
     </ThemedView>
   );
