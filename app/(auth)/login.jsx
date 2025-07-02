@@ -19,13 +19,16 @@ const Login = () => {
     email: "",
     password: "",
   });
-
-  const { login } = useUser();
+  const [error, setError] = useState(null);
+  const { user, login } = useUser();
 
   const handleSubmit = async () => {
+    setError(null);
     try {
       await login(authData.email, authData.password);
-    } catch (error) {}
+    } catch (error) {
+      setError(error.message);
+    }
   };
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -53,6 +56,7 @@ const Login = () => {
         >
           <Text style={{ color: "#f2f2f2", textAlign: "center" }}>Login</Text>
         </ThemedButton>
+        {error && <ThemedText style={styles.error}>{error}</ThemedText>}
         <ThemedText>
           Don't have an account?{" "}
           <Link href="/register" style={styles.link}>
@@ -87,5 +91,10 @@ const styles = StyleSheet.create({
     color: "#6849a7",
     fontWeight: "bold",
     textDecorationLine: "underline",
+  },
+  error: {
+    color: "#ff0000",
+    textAlign: "center",
+    marginBottom: 20,
   },
 });

@@ -20,11 +20,15 @@ const Register = () => {
     email: "",
     password: "",
   });
+  const [error, setError] = useState(null);
 
   const handleSubmit = async () => {
+    setError(null);
     try {
       await register(authData.email, authData.password);
-    } catch (error) {}
+    } catch (error) {
+      setError(error.message);
+    }
   };
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -54,6 +58,7 @@ const Register = () => {
             Register
           </Text>
         </ThemedButton>
+        {error && <ThemedText style={styles.error}>{error}</ThemedText>}
         <ThemedText>
           Already have an account?{" "}
           <Link href="/login" style={styles.link}>
@@ -88,5 +93,10 @@ const styles = StyleSheet.create({
     color: "#6849a7",
     fontWeight: "bold",
     textDecorationLine: "underline",
+  },
+  error: {
+    color: "#ff0000",
+    textAlign: "center",
+    marginBottom: 20,
   },
 });
